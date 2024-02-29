@@ -1,6 +1,9 @@
 import os
+from dotenv import load_dotenv
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,11 +80,11 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommercedb',
-        'USER': 'superuser',
-        'PASSWORD': 'kenny123DADE8022',
-        'HOST': 'ecommercedb.cnkwguy4cj5j.eu-north-1.rds.amazonaws.com',
-        'PORT': '5432'
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
 
@@ -135,9 +138,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-STRIPE_SECRET_KEY = 'sk_test_51OhlASK7PHgl9LYlxxRZlyVHPm0YJoRUEve0rDf16XDlQphLGJ7HXQlG8arPvUzsLicxWaqYsDOLqjcr6lUR5Fz400Eiq1c4Ng'
-STRIPE_API_VERSION = '2022-08-01'
-STRIPE_WEBHOOK_SECRET = 'whsec_8d6ac5ecafc3abdc15b72a14b66064c082dc45ca5c1cf3991c41d34dac762a05'
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_API_VERSION = os.getenv('STRIPE_API_VERSION')
+STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET')
+
 
 STATIC_ROOT = BASE_DIR / 'static'
 
@@ -156,12 +160,12 @@ LOCALE_PATHS = [
 ]
 
 
-AWS_ACCESS_KEY_ID = 'AKIAUS342MQ5NGX7EASD'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'ecommerce-bucket-made-with-django'
-AWS_S3_SIGNATURE_NAME = 's3v4'
-AWS_S3_REGION_NAME = 'eu-north-1'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_VERITY = True
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY ')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_SIGNATURE_NAME = os.getenv('AWS_S3_SIGNATURE_NAME')
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+AWS_S3_FILE_OVERWRITE = os.getenv('AWS_S3_FILE_OVERWRITE')
+AWS_DEFAULT_ACL = os.getenv('AWS_DEFAULT_ACL')
+AWS_S3_VERITY = os.getenv('AWS_S3_VERITY')
+DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE')
