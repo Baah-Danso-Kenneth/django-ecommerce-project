@@ -154,3 +154,14 @@ LANGUAGES = [
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale')
 ]
+
+
+AWS_ACCESS_KEY_ID = 'AKIAUS342MQ5NGX7EASD'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'ecommerce-bucket-made-with-django'
+AWS_S3_SIGNATURE_NAME = 's3v4'
+AWS_S3_REGION_NAME = 'eu-north-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
